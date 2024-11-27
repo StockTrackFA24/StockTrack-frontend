@@ -18,7 +18,8 @@
     "next-auth": "^4.24.10",
     "pnpm": "^9.12.3",
     "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028"
+    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "postcss": "^8",

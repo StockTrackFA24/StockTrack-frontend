@@ -1,7 +1,19 @@
-import Chart from 'chart.js/auto';
 import {queryWarehouse} from "@/app/lib/data";
+import PieChart from "@/app/ui/PieChart";
+
 
 export default async function Page() {
-    let warehouseItems = await queryWarehouse("", -1);
-    return <p>Dashboard Page</p>;
+    const data = await queryWarehouse("", -1);
+
+
+    return (
+        <div>
+            <p>
+                Dashboard Page
+            </p>
+            <div style={{height: '50%', width: '50%'}}>
+                <PieChart data={data}/>
+            </div>
+        </div>
+    );
 }

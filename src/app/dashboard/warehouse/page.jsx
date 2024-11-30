@@ -1,4 +1,4 @@
-import Pagination from '@/app/ui/dashboard/warehouse/pagination'
+import Pagination from '@/app/ui/dashboard/pagination'
 import Search from '@/app/ui/search';
 import WarehouseTable from "@/app/ui/dashboard/warehouse/table";
 import { lusitana } from '@/app/fonts/next_fonts';

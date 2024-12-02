@@ -1,4 +1,5 @@
 import {queryWarehouse} from "@/app/lib/data";
+import {DeleteItem} from "@/app/ui/dashboard/warehouse/buttons";
 
 export default async function WarehouseTable(query) {
     const queryString = query.query
@@ -60,6 +61,7 @@ export default async function WarehouseTable(query) {
                             <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                 <div className="flex justify-end gap-3">
                                     Edit Button Not Implemented Yet
+                                    <DeleteItem id={item._id}/>
                                 </div>
                             </td>
                         </tr>

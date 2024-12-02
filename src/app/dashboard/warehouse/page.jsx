@@ -17,6 +17,12 @@ export default async function Page(props) {
                     <h1 className={`${lusitana.className} text-2xl`}>Warehouse</h1>
                     <Link
                         className="bg-green-800 rounded px-5 py-2"
+                        href="/dashboard/warehouse/createItem"
+                    >
+                        Create a New Item
+                    </Link>
+                    <Link
+                        className="bg-green-800 rounded px-5 py-2"
                         href="/api/export"
                     >
                         CSV Export

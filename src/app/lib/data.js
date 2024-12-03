@@ -54,6 +54,6 @@ export async function queryBatches(queryString, currentPage) {
 }
 
 export async function findBatchPages(queryString) {
-    let batchItems = await queryWarehouse(queryString, -1);
+    let batchItems = await queryBatches(queryString, -1);
     return Math.ceil(batchItems.length / ITEMS_PER_PAGE);
 }

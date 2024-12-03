@@ -4,6 +4,7 @@ import WarehouseTable from "@/app/ui/dashboard/warehouse/table";
 import { lusitana } from '@/app/fonts/next_fonts';
 import {findWarehousePages} from "@/app/lib/data";
 import Link from "next/link";
+import UploadForm from "@/app/ui/dashboard/warehouse/uploadForm";
 
 
 export default async function Page(props) {
@@ -27,6 +28,7 @@ export default async function Page(props) {
                     >
                         CSV Export
                     </Link>
+                    <UploadForm/>
                 </div>
                 <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
                     <Search placeholder="Search warehouse items..." />

@@ -3,6 +3,7 @@
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
 import axios from "axios";
+import fs from "node:fs/promises";
 
 export async function createItem(prevState, formData) {
     const requestData = {
@@ -25,8 +26,18 @@ export async function createItem(prevState, formData) {
 }
 
 export async function deleteItem(id) {
-    console.log(id);
-    const address = process.env.BACKEND_ADDRESS + '/deleteItem';
+    const requestData = {
+        _id: id,
+    };
+    const address = process.env.BACKEND_ADDRESS + '/removeItem';
+    await axios.post(address, requestData, {
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+
+    }).catch(function (error) {
+        console.log(error);
+    });
+    revalidatePath('/dashboard/warehouse');
 }
 
 export async function createBatch(prevState, formData) {
@@ -44,4 +55,33 @@ export async function createBatch(prevState, formData) {
     })
     revalidatePath('/dashboard/batches');
     redirect('/dashboard/batches');
+}
+
+export async function deleteBatch(id) {
+    const requestData = {
+        _id: id,
+    };
+    const address = process.env.BACKEND_ADDRESS + '/removeBatch';
+    await axios.post(address, requestData, {
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+
+    }).catch(function (error) {
+        console.log(error);
+    });
+    revalidatePath('/dashboard/batches');
+}
+
+export async function uploadFile(formData) {
+    const file = formData.get("file");
+    console.log(file.name)
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
+    console.log(buffer);
+    /*
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
+    await fs.writeFile(`./public/uploads/${file.name}`, buffer)
+
+     */
 }

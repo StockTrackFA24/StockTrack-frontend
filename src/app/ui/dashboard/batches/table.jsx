@@ -1,9 +1,11 @@
 import {queryBatches} from "@/app/lib/data";
+import {DeleteBatch} from "@/app/ui/dashboard/batches/buttons";
 
 export default async function BatchTable(query) {
     const queryString = query.query
     const currentPage = query.currentPage
     const batchItems = await queryBatches(queryString, currentPage);
+
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
@@ -47,6 +49,7 @@ export default async function BatchTable(query) {
                                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                         <div className="flex justify-end gap-3">
                                             Edit Button Not Implemented Yet
+                                            <DeleteBatch id={item._id}/>
                                         </div>
                                     </td>
                                 </tr>

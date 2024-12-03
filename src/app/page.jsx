@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -9,7 +9,9 @@ export default function Home() {
 
         </p>
       </div>
-
+        <Link className="bg-green-700 rounded px-5 py-2 w-1/4" href="/dashboard">
+            Placeholder- Go to Dashboard
+        </Link>
     </main>
   );
 }

@@ -3,6 +3,7 @@ import Search from '@/app/ui/search';
 import BatchTable from "@/app/ui/dashboard/batches/table";
 import {lusitana} from "@/app/fonts/next_fonts";
 import {findBatchPages} from "@/app/lib/data";
+import Link from "next/link";
 
 export default async function Page(props) {
     const searchParams = await props.searchParams;
@@ -13,6 +14,12 @@ export default async function Page(props) {
         <div className="w-full">
             <div className="flex w-full items-center justify-between">
                 <h1 className={`${lusitana.className} text-2xl`}>Batches</h1>
+                <Link
+                    className="bg-green-800 rounded px-5 py-2"
+                    href="/dashboard/batches/createBatch"
+                >
+                    Create a New Batch
+                </Link>
             </div>
             <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
                 <Search placeholder="Search batches..." />

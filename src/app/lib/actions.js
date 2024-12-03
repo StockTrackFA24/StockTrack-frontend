@@ -25,6 +25,26 @@ export async function createItem(prevState, formData) {
     redirect('/dashboard/warehouse')
 }
 
+export async function editItem(id, prevState, formData) {
+    const requestData = {
+        _id: id,
+        name: formData.get('name'),
+        category: formData.get('category'),
+        description: formData.get('description'),
+        price: Number(formData.get('price')),
+    }
+    const address = process.env.BACKEND_ADDRESS + '/itemUpdate';
+    axios.post(address, requestData, {
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+
+    }).catch(function (error) {
+        console.log(error);
+    })
+    revalidatePath('/dashboard/warehouse');
+    redirect('/dashboard/warehouse');
+}
+
 export async function deleteItem(id) {
     const requestData = {
         _id: id,

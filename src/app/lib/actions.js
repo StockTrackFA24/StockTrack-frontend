@@ -25,6 +25,26 @@ export async function createItem(prevState, formData) {
     redirect('/dashboard/warehouse')
 }
 
+export async function createRole(Perms, prevState, formData) {
+    const requestData = {
+        role_name: formData.get('role_name'),
+        display_name: formData.get('display_name'),
+        description: formData.get('description'),
+        Perms: Perms,
+    }
+
+    const address = process.env.BACKEND_ADDRESS + '/createRole';
+    axios.post(address, requestData, {
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+
+    }).catch(function (error) {
+        console.log(error);
+    })
+    revalidatePath('/dashboard/accounts')
+    redirect('/dashboard/accounts')
+}
+
 export async function editItem(id, prevState, formData) {
     const requestData = {
         _id: id,

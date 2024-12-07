@@ -112,6 +112,24 @@ export async function deleteBatch(id) {
     revalidatePath('/dashboard/batches');
 }
 
+export async function editBatch(id, previousStock, prevState, formData) {
+    const increment = Number(previousStock) - Number(formData.get("stock"));
+    const address = process.env.BACKEND_ADDRESS + '/batchStock';
+    const requestData = {
+        _id: id,
+        stock: increment,
+    }
+    await axios.post(address, requestData, {
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+
+    }).catch(function (error) {
+        console.log(error)
+    })
+    revalidatePath('/dashboard/batches');
+    redirect('/dashboard/batches');
+}
+
 export async function uploadFile(formData) {
     const file = formData.get("file");
     console.log(file.name)

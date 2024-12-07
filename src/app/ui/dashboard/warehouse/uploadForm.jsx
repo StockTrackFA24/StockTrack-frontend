@@ -11,7 +11,7 @@ export default function UploadForm() {
             <form action={uploadFile} className="flex flex-col gap-4">
                 <label className="">
                     <span>Upload a CSV file </span>
-                    <input type="file" name="file" ref={fileInput}/>
+                    <input type="file" name="file" accept="text/csv" ref={fileInput}/>
                 </label>
                 <button type="submit">Submit</button>
             </form>

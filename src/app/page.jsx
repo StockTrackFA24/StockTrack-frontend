@@ -1,6 +1,8 @@
 import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+
+
   return (
     <main className="flex min-h0-screen flex-col p-6">
       <div className="flex h-50 shrink-0 items-end rounded-lg bg-green-800 p-6 md:h-52">

@@ -5,23 +5,16 @@ import Link from "next/link";
 
 export default function Form(props) {
 
-    let Perms = 0b0000n;
-    let formFunction = createRole.bind(null,5 );
-
     function handleChange(e) {
         if (e.target.checked) {
-            Perms += BigInt(e.target.value);
+            document.getElementById("permissions").value = Number(document.getElementById("permissions").value) + Number(e.target.value);
         } else {
-            Perms -= BigInt(e.target.value);
+            document.getElementById("permissions").value = Number(document.getElementById("permissions").value) - Number(e.target.value);
         }
-
-        formFunction = createRole.bind(null, Perms);
-
-        console.log(Perms);
     }
 
     const initialState = {message: null, errors: {}};
-    const [state, formAction] = useActionState(formFunction, initialState);
+    const [state, formAction] = useActionState(createRole, initialState);
 
     return (
         <form action={formAction}>
@@ -273,6 +266,24 @@ export default function Form(props) {
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="role_name" className="mb-2 block text-sm font-medium">
+                        Permissions
+                    </label>
+                    <div className="relative mt-2 rounded-md">
+                        <div className="relative">
+                            <input
+                                id="permissions"
+                                name="permissions"
+                                type="number"
+                                placeholder="0000"
+                                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                                readOnly="readOnly"
                             />
                         </div>
                     </div>

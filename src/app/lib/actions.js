@@ -25,12 +25,12 @@ export async function createItem(prevState, formData) {
     redirect('/dashboard/warehouse')
 }
 
-export async function createRole(Perms, prevState, formData) {
+export async function createRole(prevState, formData) {
     const requestData = {
         role_name: formData.get('role_name'),
         display_name: formData.get('display_name'),
         description: formData.get('description'),
-        Perms: Perms,
+        Perms: formData.get('permissions'),
     }
 
     const address = process.env.BACKEND_ADDRESS + '/createRole';
@@ -39,10 +39,11 @@ export async function createRole(Perms, prevState, formData) {
     }).then(response => {
 
     }).catch(function (error) {
+        //console.log(response);
         console.log(error);
     })
-    revalidatePath('/dashboard/accounts')
-    redirect('/dashboard/accounts')
+    //revalidatePath('/dashboard/accounts')
+    //redirect('/dashboard/accounts')
 }
 
 export async function editItem(id, prevState, formData) {

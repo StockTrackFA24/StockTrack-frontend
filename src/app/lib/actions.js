@@ -112,14 +112,21 @@ export async function editBatch(id, previousStock, prevState, formData) {
 
 export async function uploadFile(formData) {
     const file = formData.get("file");
-    console.log(file.name)
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = new Uint8Array(arrayBuffer);
-    console.log(buffer);
-    /*
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = new Uint8Array(arrayBuffer);
-    await fs.writeFile(`./public/uploads/${file.name}`, buffer)
+    if(file.name.endsWith(".csv")) {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = new Uint8Array(arrayBuffer);
+        const fileString = String.fromCharCode.apply(null, buffer)
+        const address = process.env.BACKEND_ADDRESS + '/importCSV';
+        const requestData = {
+            csvString: fileString,
+        }
+        await axios.post(address, requestData, {
+            headers: {"Content-Type": "application/json"}
+        }).then(response => {
 
-     */
+        }).catch(function (error) {
+            console.log(error)
+        })
+        revalidatePath('/dashboard/warehouse');
+    }
 }

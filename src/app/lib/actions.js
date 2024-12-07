@@ -42,8 +42,9 @@ export async function createRole(prevState, formData) {
         //console.log(response);
         console.log(error);
     })
-    //revalidatePath('/dashboard/accounts')
-    //redirect('/dashboard/accounts')
+
+    revalidatePath('/dashboard/accounts')
+    redirect('/dashboard/accounts')
 }
 
 export async function editItem(id, prevState, formData) {

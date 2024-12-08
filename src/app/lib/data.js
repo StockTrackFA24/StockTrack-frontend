@@ -45,6 +45,22 @@ export async function queryRoles() {
     return responseData;
 }
 
+export async function queryAccounts() {
+    let address = process.env.BACKEND_ADDRESS + "/accountQuery";
+    let responseData;
+
+    await axios.post(address, {},
+        {
+            headers: {"Content-Type": "application/json"}
+        }).then(function (response) {
+            responseData = response.data;
+    }).catch(function (error) {
+        console.log(error);
+    })
+
+    return responseData;
+}
+
 export async function findWarehousePages(queryString) {
     let warehouseItems = await queryWarehouse(queryString, -1);
     return Math.ceil(warehouseItems.length / ITEMS_PER_PAGE);
@@ -99,4 +115,9 @@ export async function queryAuditLogs(currentPage) {
 export async function findAuditPages() {
     let auditItems = await queryAuditLogs(-1);
     return Math.ceil(auditItems.length / ITEMS_PER_PAGE);
+}
+
+export async function findAccountPages() {
+    let accounts = await queryAccounts(-1);
+    return Math.ceil(accounts.length / ITEMS_PER_PAGE);
 }

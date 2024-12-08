@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as queryString from "node:querystring";
 
-const ITEMS_PER_PAGE = 6
+const ITEMS_PER_PAGE = 10
 
 export async function queryWarehouse(queryString, currentPage) {
 

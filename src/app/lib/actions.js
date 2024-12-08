@@ -47,6 +47,31 @@ export async function createRole(prevState, formData) {
     redirect('/dashboard/accounts')
 }
 
+export async function createAccount(prevState, formData) {
+    const requestData = {
+        name: {
+            first: formData.get('first_name'),
+            middle: formData.get('middle_name'),
+            last: formData.get('last_name'),
+        },
+        role: formData.get('role'),
+        username: formData.get('username'),
+        password: formData.get('password'),
+    }
+
+    const address = process.env.BACKEND_ADDRESS + '/createAccount';
+    axios.post(address, requestData, {
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+
+    }).catch(function (error) {
+        console.log(error);
+    })
+
+    revalidatePath('/dashboard/accounts')
+    redirect('/dashboard/accounts')
+}
+
 export async function editItem(id, prevState, formData) {
     const requestData = {
         _id: id,

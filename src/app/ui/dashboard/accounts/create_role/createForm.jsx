@@ -16,8 +16,6 @@ export default function Form(props) {
     const initialState = {message: null, errors: {}};
     const [state, formAction] = useActionState(createRole, initialState);
 
-    console.log("hello there")
-
     return (
         <form action={formAction}>
             <div className="rounded-md bg-gray-50 p-4 md:p-6">

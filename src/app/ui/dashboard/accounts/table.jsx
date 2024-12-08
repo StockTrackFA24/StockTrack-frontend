@@ -12,7 +12,10 @@ export default async function AccountTable(query) {
                         <thead className="rounded-lg text-left text-sm font-normal">
                         <tr>
                             <th scope="col" className="px-3 py-5 font-medium">
-                                User
+                                Username
+                            </th>
+                            <th scope="col" className="px-3 py-5 font-medium">
+                                Name
                             </th>
                             <th scope="col" className="px-3 py-5 font-medium">
                                 Role
@@ -29,6 +32,10 @@ export default async function AccountTable(query) {
 
                                     <td className="whitespace-nowrap px-3 py-3">
                                         {item.username}
+                                    </td>
+
+                                    <td className="whitespace-nowrap px-3 py-3">
+                                        {item.name.last}, {item.name.first} {item.name.middle}
                                     </td>
 
                                     <td className="whitespace-nowrap px-3 py-3">

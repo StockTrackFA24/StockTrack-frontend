@@ -18,7 +18,7 @@ export default async function AuditTable(query) {
                                 Timestamp
                             </th>
                             <th scope="col" className="px-3 py-5 font-medium">
-                                description
+                                Description
                             </th>
                         </tr>
                         </thead>

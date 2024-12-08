@@ -128,6 +128,24 @@ export default function Form(props) {
                 </div>
 
                 <div className="mb-4">
+                    <label htmlFor="perm_editItem" className="mb-2 block text-sm font-medium">
+                        Edit Item
+                    </label>
+                    <div className="relative mt-2 rounded-md">
+                        <div className="relative">
+                            <input
+                                id="perm_editItem"
+                                name="perm_editItem"
+                                value="8"
+                                type="checkbox"
+                                onChange={handleChange}
+                                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mb-4">
                     <label htmlFor="perm_deleteItem" className="mb-2 block text-sm font-medium">
                         Delete Item
                     </label>
@@ -136,7 +154,7 @@ export default function Form(props) {
                             <input
                                 id="perm_deleteItem"
                                 name="perm_deleteItem"
-                                value="8"
+                                value="16"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -154,7 +172,7 @@ export default function Form(props) {
                             <input
                                 id="perm_createStock"
                                 name="perm_createStock"
-                                value="16"
+                                value="32"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -172,7 +190,7 @@ export default function Form(props) {
                             <input
                                 id="perm_editStock"
                                 name="perm_editStock"
-                                value="32"
+                                value="64"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -190,7 +208,7 @@ export default function Form(props) {
                             <input
                                 id="perm_deleteStock"
                                 name="perm_deleteStock"
-                                value="64"
+                                value="128"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -208,7 +226,7 @@ export default function Form(props) {
                             <input
                                 id="perm_viewAuditLog"
                                 name="perm_viewAuditLog"
-                                value="128"
+                                value="256"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -226,7 +244,7 @@ export default function Form(props) {
                             <input
                                 id="perm_viewAccounts"
                                 name="perm_viewAccounts"
-                                value="256"
+                                value="512"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -244,7 +262,7 @@ export default function Form(props) {
                             <input
                                 id="perm_createAccount"
                                 name="perm_createAccount"
-                                value="512"
+                                value="1024"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -262,7 +280,7 @@ export default function Form(props) {
                             <input
                                 id="perm_createRole"
                                 name="perm_createRole"
-                                value="1024"
+                                value="2048"
                                 type="checkbox"
                                 onChange={handleChange}
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"

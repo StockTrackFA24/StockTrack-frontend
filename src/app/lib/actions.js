@@ -175,5 +175,6 @@ export async function uploadFile(formData) {
             console.log(error)
         })
         revalidatePath('/dashboard/warehouse');
+        redirect('/dashboard/warehouse');
     }
 }

@@ -3,7 +3,10 @@
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
 import axios from "axios";
-import fs from "node:fs/promises";
+import {signIn} from "../../auth";
+import {use} from "react";
+import { isRedirectError } from "next/dist/client/components/redirect";
+import {CredentialsSignin} from "next-auth";
 
 export async function createItem(prevState, formData) {
     const requestData = {
@@ -176,5 +179,22 @@ export async function uploadFile(formData) {
         })
         revalidatePath('/dashboard/warehouse');
         redirect('/dashboard/warehouse');
+    }
+}
+
+export async function authenticate(prevState, formData) {
+    const username = formData.get('username');
+    const password = formData.get('password');
+    try {
+        await signIn('credentials', {username: username, password: password});
+    } catch (error) {
+        if (isRedirectError(error)) {
+            redirect("/dashboard")
+        } else {
+            if (error instanceof CredentialsSignin) {
+                return "Credentials Incorrect"
+            }
+        }
+        return "Something went wrong with sign in";
     }
 }

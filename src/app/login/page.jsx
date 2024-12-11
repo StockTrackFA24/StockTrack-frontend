@@ -1,5 +1,9 @@
 import LoginForm from '@/app/ui/loginForm';
 
+export const metadata = {
+    title: 'Login'
+}
+
 export default function LoginPage() {
     return (
         <main className="flex items-center justify-center md:h-screen">

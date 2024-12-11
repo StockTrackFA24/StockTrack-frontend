@@ -15,8 +15,8 @@ export default async function Home() {
 
         </p>
       </div>
-        <Link className="bg-green-700 rounded px-5 py-2 w-1/4" href="/dashboard">
-            Placeholder- Go to Dashboard
+        <Link className="bg-green-700 rounded px-5 py-2 w-1/4" href="/login">
+            Login
         </Link>
     </main>
   );

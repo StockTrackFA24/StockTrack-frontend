@@ -4,21 +4,27 @@ import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
 import axios from "axios";
 import {signIn} from "../../auth";
+import {auth} from "@/auth"
 import {use} from "react";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import {CredentialsSignin} from "next-auth";
 
 export async function createItem(prevState, formData) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
+
     const requestData = {
         name: formData.get('name'),
         category: formData.get('category'),
         description: formData.get('description'),
         price: Number(formData.get('price')),
         stock: Number(formData.get('stock')),
+        uid: userId
     }
     const address = process.env.BACKEND_ADDRESS + '/createItem';
     axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -29,16 +35,20 @@ export async function createItem(prevState, formData) {
 }
 
 export async function createRole(prevState, formData) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     const requestData = {
         role_name: formData.get('role_name'),
         display_name: formData.get('display_name'),
         description: formData.get('description'),
         Perms: formData.get('permissions'),
+        uid: userId,
     }
 
     const address = process.env.BACKEND_ADDRESS + '/createRole';
     axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -51,6 +61,9 @@ export async function createRole(prevState, formData) {
 }
 
 export async function createAccount(prevState, formData) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     const requestData = {
         name: {
             first: formData.get('first_name'),
@@ -60,11 +73,12 @@ export async function createAccount(prevState, formData) {
         role: formData.get('role'),
         username: formData.get('username'),
         password: formData.get('password'),
+        uid: userId,
     }
 
     const address = process.env.BACKEND_ADDRESS + '/createAccount';
     axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -76,16 +90,20 @@ export async function createAccount(prevState, formData) {
 }
 
 export async function editItem(id, prevState, formData) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     const requestData = {
         _id: id,
         name: formData.get('name'),
         category: formData.get('category'),
         description: formData.get('description'),
         price: Number(formData.get('price')),
+        uid: userId,
     }
     const address = process.env.BACKEND_ADDRESS + '/itemUpdate';
     axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -96,12 +114,16 @@ export async function editItem(id, prevState, formData) {
 }
 
 export async function deleteItem(id) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     const requestData = {
         _id: id,
+        uid: userId,
     };
     const address = process.env.BACKEND_ADDRESS + '/removeItem';
     await axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -111,13 +133,17 @@ export async function deleteItem(id) {
 }
 
 export async function createBatch(prevState, formData) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     const requestData = {
         name: formData.get('itemName'),
         stock: Number(formData.get('stock')),
+        uid: userId,
     }
     const address = process.env.BACKEND_ADDRESS + '/createBatch';
     axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -128,12 +154,16 @@ export async function createBatch(prevState, formData) {
 }
 
 export async function deleteBatch(id) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     const requestData = {
         _id: id,
+        uid: userId,
     };
     const address = process.env.BACKEND_ADDRESS + '/removeBatch';
     await axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -143,14 +173,18 @@ export async function deleteBatch(id) {
 }
 
 export async function editBatch(id, previousStock, prevState, formData) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     const increment = Number(previousStock) - Number(formData.get("stock"));
     const address = process.env.BACKEND_ADDRESS + '/batchStock';
     const requestData = {
         _id: id,
         stock: increment,
+        uid: userId,
     }
     await axios.post(address, requestData, {
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(response => {
 
     }).catch(function (error) {
@@ -161,6 +195,10 @@ export async function editBatch(id, previousStock, prevState, formData) {
 }
 
 export async function uploadFile(formData) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
+
     const file = formData.get("file");
     if(file.name.endsWith(".csv")) {
         const arrayBuffer = await file.arrayBuffer();
@@ -169,9 +207,10 @@ export async function uploadFile(formData) {
         const address = process.env.BACKEND_ADDRESS + '/importCSV';
         const requestData = {
             csvString: fileString,
+            uid: userId,
         }
         await axios.post(address, requestData, {
-            headers: {"Content-Type": "application/json"}
+            headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
         }).then(response => {
 
         }).catch(function (error) {

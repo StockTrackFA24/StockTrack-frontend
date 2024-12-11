@@ -2,12 +2,13 @@ import {queryWarehouse} from "@/app/lib/data";
 import PieChart from "@/app/ui/dashboard/PieChart";
 import BarChart from "@/app/ui/dashboard/BarChart";
 import {auth} from '@/auth'
+import {checkPermission, permissions_map} from "@/app/lib/permissions";
 
 
 export default async function Page() {
     const data = await queryWarehouse("", -1);
     const session = await auth();
-    //console.log(session);
+    let authorized = checkPermission(session.user.permissions, permissions_map.VIEW_WAREHOUSE)
 
 
     return (

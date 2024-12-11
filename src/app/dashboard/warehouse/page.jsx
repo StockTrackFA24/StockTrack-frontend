@@ -5,9 +5,13 @@ import { lusitana } from '@/app/fonts/next_fonts';
 import {findWarehousePages} from "@/app/lib/data";
 import Link from "next/link";
 import UploadForm from "@/app/ui/dashboard/warehouse/uploadForm";
+import {checkPermission, permissions_map} from "@/app/lib/permissions";
+import {auth} from "@/auth";
 
 
 export default async function Page(props) {
+    const session = await auth();
+    let authorized = checkPermission(session.user.permissions, permissions_map.VIEW_WAREHOUSE)
     const searchParams = await props.searchParams;
     const query = searchParams?.query || "";
         const currentPage = Number(searchParams?.page) || 1;

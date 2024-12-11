@@ -22,7 +22,6 @@ export const authConfig = {
         async jwt({ token, user }) {
             if (user) {
                 token.user = user;
-                token.user.permissions = "0b" + token.user.permissions;
             }
             return token;
         },

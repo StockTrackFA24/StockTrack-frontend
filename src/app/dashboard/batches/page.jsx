@@ -4,8 +4,12 @@ import BatchTable from "@/app/ui/dashboard/batches/table";
 import {lusitana} from "@/app/fonts/next_fonts";
 import {findBatchPages} from "@/app/lib/data";
 import Link from "next/link";
+import {checkPermission, permissions_map} from "@/app/lib/permissions";
+import {auth} from "@/auth";
 
 export default async function Page(props) {
+    const session = await auth();
+    let authorized = checkPermission(session.user.permissions, permissions_map.VIEW_STOCK)
     const searchParams = await props.searchParams;
     const query = searchParams?.query || "";
     const currentPage = Number(searchParams?.page) || 1;

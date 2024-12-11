@@ -2,9 +2,13 @@ import Pagination from '@/app/ui/dashboard/pagination'; // Do
 import AccountTable from '@/app/ui/dashboard/accounts/table';     // Do
 import {lusitana} from "@/app/fonts/next_fonts";        // Do
 import {findAccountPages} from "@/app/lib/data";
-import Link from "next/link";        // Do
+import Link from "next/link";
+import {checkPermission, permissions_map} from "@/app/lib/permissions";
+import {auth} from "@/auth";        // Do
 
 export default async function Page(props) {
+    const session = await auth();
+    let authorized = checkPermission(session.user.permissions, permissions_map.VIEW_ACCOUNT)
 
     const searchParams = await props.searchParams;
     const currentPage = Number(searchParams?.page) || 1;

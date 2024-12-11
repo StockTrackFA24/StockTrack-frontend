@@ -1,18 +1,22 @@
 import axios from 'axios';
-import * as queryString from "node:querystring";
+import {auth} from '@/auth'
 
 const ITEMS_PER_PAGE = 10
 
 export async function queryWarehouse(queryString, currentPage) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
 
     let address = process.env.BACKEND_ADDRESS + "/standardQuery";
     let responseData;
 
     await axios.post(address, {
-        sub: queryString
+        sub: queryString,
+        uid: userId,
     },
         {
-            headers: {"Content-Type": "application/json"}
+            headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
         }).then(function (response) {
             responseData = response.data;
         }
@@ -29,13 +33,16 @@ export async function queryWarehouse(queryString, currentPage) {
 }
 
 export async function queryRoles() {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
 
     let address = process.env.BACKEND_ADDRESS + "/roleQuery";
     let responseData;
 
-    await axios.post(address, {},
+    await axios.post(address, {uid: userId,},
         {
-            headers: {"Content-Type": "application/json"}
+            headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
         }).then(function (response) {
             responseData = response.data;
     }).catch(function (error) {
@@ -46,12 +53,15 @@ export async function queryRoles() {
 }
 
 export async function queryAccounts() {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     let address = process.env.BACKEND_ADDRESS + "/accountQuery";
     let responseData;
 
-    await axios.post(address, {},
+    await axios.post(address, {uid: userId,},
         {
-            headers: {"Content-Type": "application/json"}
+            headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
         }).then(function (response) {
             responseData = response.data;
     }).catch(function (error) {
@@ -67,13 +77,17 @@ export async function findWarehousePages(queryString) {
 }
 
 export async function queryBatches(queryString, currentPage) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     let address = process.env.BACKEND_ADDRESS + "/batchesQuery";
     let responseData;
     await axios.post(address, {
-            sub: queryString
+            sub: queryString,
+            uid: userId,
         },
         {
-            headers: {"Content-Type": "application/json"}
+            headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
         }).then(function (response) {
             responseData = response.data;
         }
@@ -95,10 +109,13 @@ export async function findBatchPages(queryString) {
 }
 
 export async function queryAuditLogs(currentPage) {
+    const session = await auth()
+    const token = session.user.token;
+    const userId = session.user.uid;
     let address = process.env.BACKEND_ADDRESS + "/auditQuery";
     let responseData;
-    await axios.post(address, {}, {
-        headers: {"Content-Type": "application/json"}
+    await axios.post(address, {uid: userId,}, {
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
     }).then(function (response) {
         responseData = response.data;
     }).catch(function (error) {

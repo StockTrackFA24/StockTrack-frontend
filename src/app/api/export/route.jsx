@@ -4,10 +4,13 @@ import {checkPermission, permissions_map} from "@/app/lib/permissions";
 
 export async function GET() {
     const session = await auth();
-    let authorized = checkPermission(session.user.permissions, permissions_map.VIEW_WAREHOUSE)
+    const token = session.user.token;
+    const userId = session.user.uid;
     let address = process.env.BACKEND_ADDRESS + "/exportItems";
     let csvString = "";
-    await axios.post(address).then(response => {
+    await axios.post(address, {uid: userId}, {
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token},
+    }).then(response => {
         csvString = response.data;
     })
     //let buffer = Buffer.from(csvString, "utf-8");

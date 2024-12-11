@@ -4,6 +4,10 @@ import Form from '@/app/ui/dashboard/batches/editForm'
 import {checkPermission, permissions_map} from "@/app/lib/permissions";
 import {auth} from "@/auth";
 
+export const metadata = {
+    title: 'Edit Batch'
+}
+
 export default async function Page(props) {
     const session = await auth();
     let authorized = checkPermission(session.user.permissions, permissions_map.EDIT_STOCK)

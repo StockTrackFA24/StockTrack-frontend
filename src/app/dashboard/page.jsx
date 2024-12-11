@@ -4,6 +4,9 @@ import BarChart from "@/app/ui/dashboard/BarChart";
 import {auth} from '@/auth'
 import {checkPermission, permissions_map} from "@/app/lib/permissions";
 
+export const metadata = {
+    title: 'Dashboard'
+}
 
 export default async function Page() {
     const data = await queryWarehouse("", -1);

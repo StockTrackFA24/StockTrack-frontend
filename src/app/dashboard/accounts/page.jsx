@@ -6,6 +6,11 @@ import Link from "next/link";
 import {checkPermission, permissions_map} from "@/app/lib/permissions";
 import {auth} from "@/auth";        // Do
 
+
+export const metadata = {
+    title: 'Accounts'
+}
+
 export default async function Page(props) {
     const session = await auth();
     let authorized = checkPermission(session.user.permissions, permissions_map.VIEW_ACCOUNT)
@@ -13,6 +18,8 @@ export default async function Page(props) {
     const searchParams = await props.searchParams;
     const currentPage = Number(searchParams?.page) || 1;
     const totalPages = await findAccountPages();
+
+
 
     return (
         <div className="w-full">

@@ -8,6 +8,9 @@ import UploadForm from "@/app/ui/dashboard/warehouse/uploadForm";
 import {checkPermission, permissions_map} from "@/app/lib/permissions";
 import {auth} from "@/auth";
 
+export const metadata = {
+    title: 'Warehouse'
+}
 
 export default async function Page(props) {
     const session = await auth();

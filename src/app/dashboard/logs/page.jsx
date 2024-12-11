@@ -5,6 +5,10 @@ import {findAuditPages} from "@/app/lib/data";
 import {checkPermission, permissions_map} from "@/app/lib/permissions";
 import {auth} from "@/auth";
 
+export const metadata = {
+    title: 'Audit Logs'
+}
+
 export default async function Page(props) {
     const session = await auth();
     let authorized = checkPermission(session.user.permissions, permissions_map.VIEW_AUDIT)

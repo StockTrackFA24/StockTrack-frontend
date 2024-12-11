@@ -3,6 +3,9 @@ import {queryWarehouse} from "@/app/lib/data";
 import {checkPermission, permissions_map} from "@/app/lib/permissions";
 import {auth} from "@/auth";
 
+export const metadata = {
+    title: 'Create Batch'
+}
 
 export default async function Page() {
     const session = await auth();

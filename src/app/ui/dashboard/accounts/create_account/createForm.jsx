@@ -78,6 +78,7 @@ export default function Form({roleList}) {
                                 name="username"
                                 type="string"
                                 placeholder="User Name"
+                                minLength={3}
                                 required
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                             />
@@ -96,6 +97,7 @@ export default function Form({roleList}) {
                                 name="password"
                                 type="password"
                                 placeholder="Password"
+                                minLength={6}
                                 required
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                             />

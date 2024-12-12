@@ -55,7 +55,7 @@ export default async function WarehouseTable(query) {
                                 {item.stock
                                 }
                             </td>
-                            <td className="whitespace-nowrap px-3 py-3">
+                            <td className="whitespace-nowrap px-3 py-3" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>
                                 {item.description}
                             </td>
                             <td className="whitespace-nowrap py-3 pl-6 pr-3">

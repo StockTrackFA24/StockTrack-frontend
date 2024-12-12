@@ -37,7 +37,7 @@ export default async function AuditTable(query) {
                                     <td className="whitespace-nowrap px-3 py-3">
                                         {String(item.timestamp)}
                                     </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
+                                    <td className="whitespace-nowrap px-3 py-3" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>
                                         {item.description}
                                     </td>
                                 </tr>

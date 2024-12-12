@@ -7,12 +7,12 @@ npm i
 pnpm install
 ```
 
-Ensure that both auth and backend services and your MongoDB instance are configured (following the instructions in their README documents) and running
+Ensure that both auth and backend services and your MongoDB instance are configured (following the instructions in their README documents) and running.
 
 Create a copy of `.env.default`, name it `.env`, and place it in the same directory as `.env.default`
 Populate the new `.env` file with the required values.
 Ensure that `BACKEND_ADDRESS` and `AUTH_ADDRESS` begin with `http://` and match the addresses (and ports) of the auth and backend servers.
-Run the included openssl command in the `env.default` file to generate the internal key for token storage
+Run the included openssl command `openssl rand -base64 32` as listed in the `env.default` file to generate the internal key for token storage
 
 Then, run the server:
 
@@ -26,3 +26,5 @@ Navigate in your browser to `http://localhost:3000/` to view the StockTrack web 
 Use a Chromium based browser for the best experience, as Firefox may experience some issues with formatting.
 
 Note: login tokens expire after 1 hour. If you experience issues with requests being denied, log out and log back in.
+
+Note: to avoid issues, run the StockTrack components in the following order: auth, then backend, then frontend.

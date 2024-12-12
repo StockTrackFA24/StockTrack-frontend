@@ -23,6 +23,9 @@ export async function queryWarehouse(queryString, currentPage) {
     ).catch(function (error) {
         console.log(error);
     })
+    if(!responseData) {
+        responseData = [];
+    }
     if (currentPage >= 0 && responseData) {
         const offset = (currentPage - 1) * ITEMS_PER_PAGE
         const offset_end = offset + ITEMS_PER_PAGE;
@@ -49,6 +52,10 @@ export async function queryRoles() {
         console.log(error);
     })
 
+    if(!responseData) {
+        responseData = [];
+    }
+
     return responseData;
 }
 
@@ -67,6 +74,10 @@ export async function queryAccounts() {
     }).catch(function (error) {
         console.log(error);
     })
+
+    if(!responseData) {
+        responseData = [];
+    }
 
     return responseData;
 }
@@ -94,6 +105,11 @@ export async function queryBatches(queryString, currentPage) {
     ).catch(function (error) {
         console.log(error);
     })
+
+    if(!responseData) {
+        responseData = [];
+    }
+
     if (currentPage >= 0 && responseData) {
         const offset = (currentPage - 1) * ITEMS_PER_PAGE
         const offset_end = offset + ITEMS_PER_PAGE;
@@ -121,6 +137,11 @@ export async function queryAuditLogs(currentPage) {
     }).catch(function (error) {
         console.log(error);
     })
+
+    if(!responseData) {
+        responseData = [];
+    }
+
     if(currentPage >= 0 && responseData) {
         const offset = (currentPage - 1) * ITEMS_PER_PAGE;
         const offset_end = offset + ITEMS_PER_PAGE;

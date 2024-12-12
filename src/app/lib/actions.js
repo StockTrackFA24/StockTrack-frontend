@@ -5,7 +5,6 @@ import {redirect} from "next/navigation";
 import axios from "axios";
 import {signIn} from "../../auth";
 import {auth} from "@/auth"
-import {use} from "react";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import {CredentialsSignin} from "next-auth";
 

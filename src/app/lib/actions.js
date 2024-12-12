@@ -1,3 +1,5 @@
+//contains all functions that need to be called as the result of an html form
+
 'use server';
 
 import {revalidatePath} from "next/cache";

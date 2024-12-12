@@ -1,4 +1,4 @@
-
+//Contains helper definitions to abstract permission checks
 
 export function checkPermission(permissionString, permissionToCheck) {
     const indexToCheck = 64 - Number(permissionToCheck.index) - 1;

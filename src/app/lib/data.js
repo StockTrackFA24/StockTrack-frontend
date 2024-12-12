@@ -1,3 +1,5 @@
+// Contains all data-handling functions that need to be called within a Page context
+
 import axios from 'axios';
 import {auth} from '@/auth'
 

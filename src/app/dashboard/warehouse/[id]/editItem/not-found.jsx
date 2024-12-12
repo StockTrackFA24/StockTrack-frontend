@@ -1,3 +1,4 @@
+//displays if an item with the given id doesn't exist (often occurs if the user manually types in a url)
 import Link from 'next/link';
 import { FaceFrownIcon } from '@heroicons/react/24/outline';
 

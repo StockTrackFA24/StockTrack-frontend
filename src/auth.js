@@ -2,7 +2,6 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import {authConfig} from "@/auth.config";
 import axios from 'axios';
-//https://stackoverflow.com/questions/69068495/how-to-get-the-provider-access-token-in-next-auth
 
 async function attemptLogin(username, password) {
     const address = process.env.AUTH_ADDRESS + "/users/login";

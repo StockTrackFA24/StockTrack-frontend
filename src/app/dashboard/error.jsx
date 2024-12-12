@@ -1,3 +1,5 @@
+//This page will display whenever an unhandled error makes it to the client, allowing a more graceful failure
+// Nextjs error popup may still show
 'use client';
 
 import { useEffect } from 'react';

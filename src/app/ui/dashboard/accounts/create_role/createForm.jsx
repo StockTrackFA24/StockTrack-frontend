@@ -18,6 +18,8 @@ export default function Form(props) {
 
     return (
         <form action={formAction}>
+
+
             <div className="rounded-md bg-gray-50 p-4 md:p-6">
                 <div className="mb-4">
                     <label htmlFor="role_name" className="mb-2 block text-sm font-medium">
@@ -68,35 +70,33 @@ export default function Form(props) {
                                 placeholder="Role Description"
                                 required
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                                label="Test Description"
                             />
                         </div>
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_viewWarehouse" className="mb-2 block text-sm font-medium">
-                        View Warehouse
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
-                            <input
-                                id="perm_viewWarehouse"
-                                name="perm_viewWarehouse"
-                                value="1"
-                                type="checkbox"
-                                onChange={handleChange}
-                                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                            />
+                            View Warehouse
+                                <input
+                                    id="perm_viewWarehouse"
+                                    name="perm_viewWarehouse"
+                                    value="1"
+                                    type="checkbox"
+                                    onChange={handleChange}
+                                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                                    label={'hello'}
+                                />
                         </div>
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_viewStock" className="mb-2 block text-sm font-medium">
-                        View Stock
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            View Stock
                             <input
                                 id="perm_viewStock"
                                 name="perm_viewStock"
@@ -109,12 +109,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_createItem" className="mb-2 block text-sm font-medium">
-                        Create Item
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Create Item
                             <input
                                 id="perm_createItem"
                                 name="perm_createItem"
@@ -127,12 +125,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_editItem" className="mb-2 block text-sm font-medium">
-                        Edit Item
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Edit Item
                             <input
                                 id="perm_editItem"
                                 name="perm_editItem"
@@ -145,12 +141,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_deleteItem" className="mb-2 block text-sm font-medium">
-                        Delete Item
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Delete Item
                             <input
                                 id="perm_deleteItem"
                                 name="perm_deleteItem"
@@ -163,12 +157,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_createStock" className="mb-2 block text-sm font-medium">
-                        Create Stock
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Create Stock
                             <input
                                 id="perm_createStock"
                                 name="perm_createStock"
@@ -181,12 +173,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_editStock" className="mb-2 block text-sm font-medium">
-                        Edit Stock
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Edit Stock
                             <input
                                 id="perm_editStock"
                                 name="perm_editStock"
@@ -199,12 +189,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_deleteStock" className="mb-2 block text-sm font-medium">
-                        Delete Stock
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Delete Stock
                             <input
                                 id="perm_deleteStock"
                                 name="perm_deleteStock"
@@ -217,12 +205,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_viewAuditLog" className="mb-2 block text-sm font-medium">
-                        View Audit Log
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            View Audit Log
                             <input
                                 id="perm_viewAuditLog"
                                 name="perm_viewAuditLog"
@@ -235,12 +221,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_viewAccounts" className="mb-2 block text-sm font-medium">
-                        View Accounts
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            View Accounts
                             <input
                                 id="perm_viewAccounts"
                                 name="perm_viewAccounts"
@@ -253,12 +237,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_createAccount" className="mb-2 block text-sm font-medium">
-                        Create Account
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Create Account
                             <input
                                 id="perm_createAccount"
                                 name="perm_createAccount"
@@ -271,12 +253,10 @@ export default function Form(props) {
                     </div>
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="perm_createRole" className="mb-2 block text-sm font-medium">
-                        Create Role
-                    </label>
+                <div className="mb-4 rounded-md" style={{border: '1px solid gray'}}>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
+                            Create Role
                             <input
                                 id="perm_createRole"
                                 name="perm_createRole"
